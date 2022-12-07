@@ -22,13 +22,31 @@
                             <table class="table table-hover text-nowrap">
                                 <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Surname</th>
+                                    <th>Full Name</th>
                                     <th>Email</th>
+                                    <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
+                                    <?php foreach($lists as $item) : ?>
+                                        <tr>
+                                            <td><?= $item->fullname; ?></td>
+                                            <td><?= $item->email; ?></td>
+                                            <td><?= $item->status; ?></td>
+                                            <td style="display:flex;column-gap:5px;">
+                                            <a href="<?= base_url('backend/admins/edit/'.$item->id); ?>" title="Edit"
+                                               class="btn btn-sm btn-primary pull-right">
+                                                <i class="voyager-paper-plane">Edit</i>
+                                            </a>
+                                            <a href="<?= base_url('backend/admins/edit/'.$item->id); ?>"
+                                               title="Delete"
+                                               class="btn btn-sm btn-danger pull-right">
+                                                <i class="voyager-paper-plane">Delete</i>
+                                            </a>
+                                        </td>
+                                        </tr>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>

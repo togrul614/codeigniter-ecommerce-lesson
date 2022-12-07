@@ -59,3 +59,4 @@ $route['backend'] = 'backend/Dashboard/index';
 
 $route['backend/admins'] = 'backend/Admins/index';
 $route['backend/admins/create'] = 'backend/Admins/create';
+$route['backend/admins/create/(:num)'] = 'backend/Admins/edit/$1';
