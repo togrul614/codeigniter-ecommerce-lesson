@@ -29,7 +29,11 @@ class Migration_Add_products extends CI_Migration
             'price' => array(
                 'type' => 'DECIMAL',
                 'constraint' => '10,2',
-                'null' => 'FALSE',
+                'default' => 0.00,
+            ),
+            'sales_prices' => array(
+                'type' => 'DECIMAL',
+                'constraint' => '10,2',
                 'default' => 0.00,
             ),
             'brand_id' => array(

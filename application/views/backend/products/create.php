@@ -1,9 +1,13 @@
 <div class="content-wrapper">
     <section class="content">
-        <div class="container-fluid">
-            <div class="card card-primary">
+        <div class="container-fluid pt-3">
+            <?php
+            errorAlert();
+            successAlert();
+            ?>
+            <div class="card card-primary ">
                 <div class="card-header">
-                    <h3 class="card-title">Products Create</h3>
+                    <h3 class="card-title"><?=$title?></h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
@@ -21,24 +25,26 @@
                         </div>
                         <div class="form-group">
                             <label for="quantity">Quantity</label>
-                            <input type="number" name="quantity" class="form-control">
+                            <input type="number" name="quantity" class="form-control" min="0">
                             <?php echo form_error('quantity','<span class = text-danger >','</span>'); ?>
                         </div>
                         <div class="form-group">
                             <label for="price">Price</label>
-                            <input type="number" name="price" class="form-control">
+                            <input type="number" name="price" class="form-control" step="0.01" min="0">
                             <?php echo form_error('price','<span class = text-danger >','</span>'); ?>
                         </div>
                         <div class="form-group">
                             <label for="sales_prices">Sales prices</label>
-                            <input type="number" name="sales_prices" class="form-control">
+                            <input type="number" name="sales_prices" class="form-control" step="0.01" min="0">
                             <?php echo form_error('sales_prices','<span class = text-danger >','</span>'); ?>
                         </div>
                         <div class="form-group">
                             <label for="brand">Brand</label>
                             <br>
                             <select class="custom-select form-control" id="brand" name="brand">
-                                <option value="">Active</option>
+                                <?php foreach($lists as $list): ?>
+                                <option value="<?= $list->id; ?>"><?= $list->title; ?></option>
+                                <?php endforeach;?>
                             </select>
                         </div>
                         <div class="form-group">

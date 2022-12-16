@@ -1,6 +1,10 @@
 <div class="content-wrapper">
     <section class="content">
-        <div class="container-fluid">
+        <div class="container-fluid pt-3">
+            <?php
+            errorAlert();
+            successAlert();
+            ?>
             <div class="card card-primary">
                 <div class="card-header">
                     <h3 class="card-title">Admin Create</h3>

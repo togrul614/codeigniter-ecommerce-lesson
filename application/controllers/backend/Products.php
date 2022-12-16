@@ -9,6 +9,7 @@ class Products extends CI_Controller
         parent::__construct();
 
         $this->load->model('Products_model', 'products_md');
+        $this->load->model('Brands_model', 'brands_md');
 
     }
 
@@ -29,23 +30,31 @@ class Products extends CI_Controller
 
             $this->form_validation->set_rules('title', 'Title', 'required');
             $this->form_validation->set_rules('description', 'Description', 'required');
-            $this->form_validation->set_rules('brand_id', 'Brand', 'required|numeric');
             $this->form_validation->set_rules('quantity', 'Quantity', 'required|numeric');
             $this->form_validation->set_rules('price', 'Price', 'required|numeric');
-            $this->form_validation->set_rules('sales_prices	', 'Sales prices', 'required|numeric');
+            $this->form_validation->set_rules('sales_prices', 'Sales prices', 'required|numeric');
+
 
             $this->form_validation->set_message('required', 'Boş buraxıla bilməz');
             $this->form_validation->set_message('numeric', 'Yalnızca rəqəm girilə bilər');
 
             if ($this->form_validation->run()) {
 
+                $brand =$this->security->xss_clean($this->input->post('brand'));
+                $item = $this->brands_md->selectActiveDataById($brand);
+
+                if (empty($item)){
+                    $this->session->set_flashdata('error_message', 'Brend lapılmadı');
+                    redirect('backend/products/create');
+                }
+
                 $request_data = [
                     'title' => $this->security->xss_clean($this->input->post('title')),
                     'description' => $this->security->xss_clean($this->input->post('description')),
-                    'quantity' => $this->security->xss_clean($this->input->post('quantity')),
-                    'price' => $this->security->xss_clean($this->input->post('price')),
-                    'sales_prices' => $this->security->xss_clean($this->input->post('sales_prices')),
-                    'brand_id' => $this->security->xss_clean($this->input->post('brand')),
+                    'quantity' => floor(abs($this->security->xss_clean($this->input->post('quantity')))),
+                    'price' => abs($this->security->xss_clean($this->input->post('price'))),
+                    'sales_prices' => abs($this->security->xss_clean($this->input->post('sales_prices'))),
+                    'brand_id' => $brand,
                     'status' => ($this->input->post('status') == 1) ? 1 : 0
                 ];
 
@@ -59,7 +68,8 @@ class Products extends CI_Controller
             }
         }
 
-        $data['title'] = 'Product List';
+        $data['title'] = 'Product Create';
+        $data['lists'] = $this->brands_md->select_all_active();
 
         $this->load->admin('products/create', $data);
 
@@ -75,23 +85,30 @@ class Products extends CI_Controller
 
             $this->form_validation->set_rules('title', 'Title', 'required');
             $this->form_validation->set_rules('description', 'Description', 'required');
-            $this->form_validation->set_rules('brand_id', 'Brand', 'required|numeric');
             $this->form_validation->set_rules('quantity', 'Quantity', 'required|numeric');
             $this->form_validation->set_rules('price', 'Price', 'required|numeric');
-            $this->form_validation->set_rules('sales_prices	', 'Sales prices', 'required|numeric');
+            $this->form_validation->set_rules('sales_prices', 'Sales prices', 'required|numeric');
 
             $this->form_validation->set_message('required', 'Boş buraxıla bilməz');
             $this->form_validation->set_message('numeric', 'Yalnızca rəqəm girilə bilər');
 
             if ($this->form_validation->run()) {
 
+                $brand =$this->security->xss_clean($this->input->post('brand'));
+                $item = $this->brands_md->selectActiveDataById($brand);
+
+                if (empty($item)){
+                    $this->session->set_flashdata('error_message', 'Brend lapılmadı');
+                    redirect('backend/products/edit');
+                }
+
                 $request_data = [
                     'title' => $this->security->xss_clean($this->input->post('title')),
                     'description' => $this->security->xss_clean($this->input->post('description')),
-                    'quantity' => $this->security->xss_clean($this->input->post('quantity')),
-                    'price' => $this->security->xss_clean($this->input->post('price')),
-                    'sales_prices' => $this->security->xss_clean($this->input->post('sales_prices')),
-                    'brand_id' => $this->security->xss_clean($this->input->post('brand')),
+                    'quantity' => floor(abs($this->security->xss_clean($this->input->post('quantity')))),
+                    'price' => abs($this->security->xss_clean($this->input->post('price'))),
+                    'sales_prices' => abs($this->security->xss_clean($this->input->post('sales_prices'))),
+                    'brand_id' => $brand,
                     'status' => ($this->input->post('status') == 1) ? 1 : 0
                 ];
 
@@ -119,6 +136,8 @@ class Products extends CI_Controller
         $data['item'] = $item;
 
         $data['title'] = 'Product Edit';
+
+        $data['lists'] = $this->brands_md->select_all_active();
 
         $this->load->admin('products/edit', $data);
 

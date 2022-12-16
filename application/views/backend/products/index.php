@@ -2,10 +2,10 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12">
+                <div class="col-12 mt-3">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Products</h3>
+                            <h3 class="card-title"><?=$title?></h3>
 
                             <div class="card-tools">
                                 <div class="input-group input-group-sm" style="width: 150px;">
@@ -36,7 +36,7 @@
                                 <tbody>
                                 <?php foreach($lists as $item) : ?>
                                         <tr>
-                                            <td><?= $item->Description; ?></td>
+                                            <td><?= $item->description; ?></td>
                                             <td><?= $item->brand_id; ?></td>
                                             <td><?= $item->quantity; ?></td>
                                             <td><?= $item->sales_prices; ?></td>

@@ -34,7 +34,15 @@ class Brands extends CI_Controller
             if ($this->form_validation->run()) {
 
                 $path = 'uploads/brand_icon/';
-                $config['upload_path'] = './' . $path;
+
+                if (!file_exists("uploads")) {
+                    mkdir("uploads");
+                }
+                if (!file_exists($path)) {
+                    mkdir($path);
+                }
+
+                $config['upload_path'] = $path;
                 $config['allowed_types'] = 'gif|jpg|png';
                 $config['overwrite'] = 'false';
 
@@ -59,6 +67,9 @@ class Brands extends CI_Controller
                     if ($insert_id > 0) {
                         $this->session->set_flashdata('success_message', 'Məlumat uğurla əlavə edildi');
                     } else {
+                        if (file_exists($request_data['logo'])) {
+                            unlink($request_data['logo']);
+                        }
                         $this->session->set_flashdata('error_message', 'Yükləmə işləmi baş tutmadı');
                     }
                 }
@@ -96,7 +107,7 @@ class Brands extends CI_Controller
                 if ($_FILES["logo"]["tmp_name"]) {
 
                     $path = 'uploads/brand_icon/';
-                    $config['upload_path'] = './' . $path;
+                    $config['upload_path'] = $path;
                     $config['allowed_types'] = 'gif|jpg|png';
                     $config['overwrite'] = 'false';
 
@@ -111,7 +122,7 @@ class Brands extends CI_Controller
                     } else {
 
                         $file_data = $this->upload->data();
-                        $request_data['logo'] = $path.$file_data['file_name'];
+                        $request_data['logo'] = $path . $file_data['file_name'];
                         $unlink++;
                     }
                 }
@@ -124,7 +135,7 @@ class Brands extends CI_Controller
                 if ($affected_rows > 0) {
                     $this->session->set_flashdata('success_message', 'Məlumat uğurla dəyişdirildi');
 
-                    if ($unlink > 0 and file_exists($img)){
+                    if ($unlink > 0 and file_exists($img)) {
                         unlink($img);
                     }
 
@@ -157,9 +168,16 @@ class Brands extends CI_Controller
     public function delete($id)
     {
         $id = $this->security->xss_clean($id);
+
+        $select = $this->brands_md->selectDataById($id);
+        $logo = $select->logo;
+
         $item = $this->brands_md->delete($id);
 
         if ($item > 0) {
+            if (file_exists($logo)) {
+                unlink($logo);
+            }
             $this->session->set_flashdata('success_message', 'Uğurlu şəkildə silindi');
         } else {
             $this->session->set_flashdata('error_message', 'Silinmə zamanı xəta baş verdi');

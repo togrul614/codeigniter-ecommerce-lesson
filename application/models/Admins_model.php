@@ -9,12 +9,6 @@ class Admins_model extends CI_Model {
     protected $table = 'admins';
 
     public function insert($data){
-        // $data = array(
-        //         'fullname' => $this->fullname,
-        //         'password' => $this->password,
-        //         'email' => $this->email,
-        //         'status' => $this->status
-        // );
     
         $this->db->insert($this->table, $data);
 
@@ -22,7 +16,7 @@ class Admins_model extends CI_Model {
     }
 
     public function select_all(){
-        $this->db->where('status',1);
+        //$this->db->where('status',1);
         $query = $this->db->get($this->table);
 
         return $query->result();

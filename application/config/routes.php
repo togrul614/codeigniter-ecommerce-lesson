@@ -77,10 +77,10 @@ $route['backend/pages/create'] = 'backend/pages/create';
 $route['backend/pages/create/(:num)'] = 'backend/pages/edit/$1';
 $route['backend/pages/delete/(:num)'] = 'backend/pages/delete/$1';
 
-$route['backend/products'] = 'backend/pages/index';
-$route['backend/products/create'] = 'backend/products/create';
-$route['backend/products/create/(:num)'] = 'backend/products/edit/$1';
-$route['backend/products/delete/(:num)'] = 'backend/products/delete/$1';
+$route['backend/products'] = 'backend/Products/index';
+$route['backend/products/create'] = 'backend/Products/create';
+$route['backend/products/create/(:num)'] = 'backend/Products/edit/$1';
+$route['backend/products/delete/(:num)'] = 'backend/Products/delete/$1';
 
 $route['backend/settings'] = 'backend/settings/index';
 $route['backend/settings/create'] = 'backend/settings/create';

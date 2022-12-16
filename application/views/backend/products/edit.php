@@ -1,9 +1,13 @@
 <div class="content-wrapper">
     <section class="content">
-        <div class="container-fluid">
+        <div class="container-fluid pt-3">
+            <?php
+            errorAlert();
+            successAlert();
+            ?>
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Products Edit</h3>
+                    <h3 class="card-title"><?=$title?></h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
@@ -22,7 +26,7 @@
                         <div class="form-group">
                             <label for="quantity">Quantity</label>
                             <input type="number" name="quantity" class="form-control" value="<?= $item->quantity; ?>">
-                            <?php echo form_error('description','<span class = text-danger >','</span>'); ?>
+                            <?php echo form_error('quantity','<span class = text-danger >','</span>'); ?>
                         </div>
                         <div class="form-group">
                             <label for="price">Price</label>
@@ -38,8 +42,9 @@
                             <label for="brand">Brand</label>
                             <br>
                             <select class="custom-select form-control" id="brand" name="brand">
-                                <option value="0" <?php echo  ($item->brand_id == 0) ? 'selected' : ''  ?>>Non-Active</option>
-                                <option value="1" <?php echo ($item->brand_id == 1) ? 'selected' : ''  ?>>Active</option>
+                                <?php foreach($lists as $list): ?>
+                                <option value="<?= $list->id; ?>" <?php echo ($item->id == $list->id) ? 'selected' : '' ?> ><?= $list->title; ?></option>
+                                <?php endforeach;?>
                             </select>
                         </div>
                         <div class="form-group">

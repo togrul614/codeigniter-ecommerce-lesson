@@ -27,7 +27,7 @@ class Migration_Add_orders extends CI_Migration
                 'constraint' => '3',
             ),
             'total_amount' => array(
-                'type' => 'double',
+                'type' => 'DOUBLE',
                 'constraint' => '10,2',
                 'default' => 0.00,
             ),

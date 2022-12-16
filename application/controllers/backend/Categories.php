@@ -8,7 +8,7 @@ class Categories extends CI_Controller
     {
         parent::__construct();
 
-        $this->load->model('Categories_model', 'categories_md');
+        $this->load->model('Category_model', 'categories_md');
 
     }
 
@@ -33,16 +33,25 @@ class Categories extends CI_Controller
 
             if ($this->form_validation->run()) {
 
+                $parentcategory = $this->security->xss_clean($this->input->post('parentcategory'));
+
+                $item = $this->categories_md->selectActiveDataById($parentcategory);
+
+                if (empty($item)){
+                    $parentcategory = null;
+                }
+
                 $request_data = [
                     'title' => $this->security->xss_clean($this->input->post('title')),
-                    'parent_id' => $this->security->xss_clean($this->input->post('subcategory')),
+                    'parent_id' => $parentcategory,
                     'status' => ($this->input->post('status') == 1) ? 1 : 0
                 ];
 
-                $insert_id = $this->categories_md->insert($request_data);
+                $insert_id  = $this->categories_md->insert($request_data);
 
                 if ($insert_id > 0) {
                     $this->session->set_flashdata('success_message', 'Məlumat uğurla əlavə edildi');
+                    redirect('backend/categories/create');
                 } else {
                     $this->session->set_flashdata('error_message', 'Yükləmə işləmi baş tutmadı');
                 }
@@ -50,9 +59,9 @@ class Categories extends CI_Controller
         }
 
         $data['title'] = 'Categories List';
+        $data['lists'] = $this->categories_md->select_all_active();
 
         $this->load->admin('categories/create', $data);
-
     }
 
     public function edit($id)
@@ -69,9 +78,17 @@ class Categories extends CI_Controller
 
             if ($this->form_validation->run()) {
 
+                $parentcategory = $this->security->xss_clean($this->input->post('parentcategory'));
+
+                $item = $this->categories_md->selectActiveDataById($parentcategory);
+
+                if (empty($item)){
+                    $parentcategory = null;
+                }
+
                 $request_data = [
                     'title' => $this->security->xss_clean($this->input->post('title')),
-                    'parent_id' => $this->security->xss_clean($this->input->post('subcategory')),
+                    'parent_id' => $parentcategory,
                     'status' => ($this->input->post('status') == 1) ? 1 : 0
                 ];
 
@@ -100,9 +117,9 @@ class Categories extends CI_Controller
         $data['item'] = $item;
 
         $data['title'] = 'Categories Edit';
+        $data['lists'] = $this->categories_md->selectActive_isNotId($id);
 
         $this->load->admin('categories/edit', $data);
-
     }
 
 

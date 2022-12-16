@@ -29,11 +29,11 @@ class Migration_Add_users extends CI_Migration
             ),
             'phone' => array(
                 'type' => 'VARCHAR',
-                'constraint' => 15,
+                'constraint' => 25,
             ),
             'password' => array(
                 'type' => 'VARCHAR',
-                'constraint' => 100,
+                'constraint' => 255,
             ),
             'status' => array(
                 'type' => 'INT',

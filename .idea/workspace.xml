@@ -2,8 +2,36 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e68ecfeb-1b90-404d-b446-c796adbcb0ec" name="Changes" comment="Brands, settings, categories, pages">
-      <change afterPath="$PROJECT_DIR$/application/migrations/017_add_blog.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/config/migration.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/config/migration.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/config/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/config/routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/backend/Brands.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/backend/Brands.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/backend/Categories.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/backend/Categories.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/backend/Products.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/backend/Products.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/migrations/002_add_categories.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/migrations/005_add_products.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/migrations/005_add_products.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/migrations/006_add_users.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/migrations/006_add_users.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/migrations/008_add_category.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/migrations/008_add_category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/migrations/014_add_orders.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/migrations/014_add_orders.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/migrations/017_add_blog.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/migrations/002_add_blog.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/models/Admins_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/Admins_model.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/models/Brands_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/Brands_model.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/models/Categories_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/Category_model.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/backend/admins/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/backend/admins/create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/backend/admins/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/backend/admins/edit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/backend/admins/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/backend/admins/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/backend/brands/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/backend/brands/create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/backend/brands/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/backend/brands/edit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/backend/categories/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/backend/categories/create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/backend/categories/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/backend/categories/edit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/backend/categories/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/backend/categories/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/backend/pages/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/backend/pages/create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/backend/pages/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/backend/pages/edit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/backend/products/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/backend/products/create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/backend/products/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/backend/products/edit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/backend/products/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/backend/products/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/backend/settings/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/backend/settings/create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/backend/settings/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/backend/settings/edit.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,6 +139,11 @@
     ]
   }
 }</component>
+  <component name="RunManager">
+    <configuration name="Products.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/application/controllers/backend/Products.php">
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -131,7 +164,9 @@
       <workItem from="1670929893190" duration="27263000" />
       <workItem from="1670967785136" duration="19113000" />
       <workItem from="1671017506214" duration="8417000" />
-      <workItem from="1671032044690" duration="4606000" />
+      <workItem from="1671032044690" duration="4875000" />
+      <workItem from="1671107775632" duration="36279000" />
+      <workItem from="1671185607934" duration="4139000" />
     </task>
     <task id="LOCAL-00001" summary="Brands, settings, categories, pages">
       <created>1671023016859</created>

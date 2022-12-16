@@ -1,6 +1,10 @@
 <div class="content-wrapper">
     <section class="content">
-        <div class="container-fluid">
+        <div class="container-fluid pt-3">
+            <?php
+            errorAlert();
+            successAlert();
+            ?>
             <div class="card card-primary">
                 <div class="card-header">
                     <h3 class="card-title">Category Create</h3>
@@ -15,11 +19,13 @@
                             <?php echo form_error('title','<span class =text-danger >','</span>'); ?>
                         </div>
                         <div class="form-group">
-                            <label for="Status">Is menu</label>
+                            <label for="parentcategory">Parent category</label>
                             <br>
-                            <select class="custom-select form-control" id="ismenu" name="ismenu">
-                                <option value="0" <?php echo  ($item->status == 0) ? 'selected' : ''  ?>>Non-Active</option>
-                                <option value="1" <?php echo ($item->status == 1) ? 'selected' : ''  ?>>Active</option>
+                            <select class="custom-select form-control" id="parentcategory" name="parentcategory">
+                                <option>Choose parent category</option>
+                                <?php foreach($lists as $list) : ?>
+                                <option value="<?= $list->id; ?>" <?php echo ($item->id == $list->id) ? 'selected' : '' ?> ><?= $list->title; ?></option>
+                                <?php endforeach;?>
                             </select>
                         </div>
                         <div class="form-group">

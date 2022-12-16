@@ -1,6 +1,10 @@
 <div class="content-wrapper">
     <section class="content">
-        <div class="container-fluid">
+        <div class="container-fluid pt-3">
+            <?php
+            errorAlert();
+            successAlert();
+            ?>
             <div class="card card-primary">
                 <div class="card-header">
                     <h3 class="card-title">Category Create</h3>
@@ -12,13 +16,16 @@
                         <div class="form-group">
                             <label for="title">Tittle</label>
                             <input type="text" name="title" class="form-control" placeholder="Enter Name">
-                            <?php echo form_error('Title', '<span class =text-danger >','</span>'); ?>
+                            <?php echo form_error('title', '<span class =text-danger >','</span>'); ?>
                         </div>
                          <div class="form-group">
-                            <label for="subcategory">Sub category</label>
+                            <label for="parentcategory">Parent category</label>
                             <br>
-                            <select class="custom-select form-control" id="subcategory" name="subcategory">
-                                <option >Choose sub category</option>
+                            <select class="custom-select form-control" id="parentcategory" name="parentcategory">
+                                <option>Choose parent category</option>
+                                <?php foreach($lists as $item) : ?>
+                                <option value="<?= $item->id; ?>"><?= $item->title; ?></option>
+                                <?php endforeach;?>
                             </select>
                         </div>
                         <div class="form-group">
