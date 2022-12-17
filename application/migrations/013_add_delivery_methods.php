@@ -20,8 +20,8 @@ class Migration_Add_delivery_methods extends CI_Migration
                 'constraint' => 250,
             ),
             'order' => array(
-                'type' => 'varchar',
-                'constraint' => 255,
+                'type' => 'INT',
+                'constraint' => 7,
             ),
             'status' => array(
                 'type' => 'INT',

@@ -16,11 +16,11 @@ class Migration_Add_orders extends CI_Migration
             ),
             'user_id' => array(
                 'type' => 'INT',
-                'constraint' => '10',
+                'constraint' => '5',
             ),
             'payment_method' => array(
                 'type' => 'INT',
-                'constraint' => '7',
+                'constraint' => '3',
             ),
             'delivery_method' => array(
                 'type' => 'INT',
